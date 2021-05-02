@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="p3V-5K-xiF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7Wv-wH-Pcs">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Emoji Table View Controller-->
+        <!--Emoji Dictionary-->
         <scene sceneID="DeS-VF-ezc">
             <objects>
                 <tableViewController id="p3V-5K-xiF" customClass="EmojiTableViewController" customModule="EmojiDictionary" customModuleProvider="target" sceneMemberID="viewController">
@@ -30,10 +31,76 @@
                             <outlet property="delegate" destination="p3V-5K-xiF" id="e1f-r7-hEq"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Emoji Dictionary" id="a39-yq-e98">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="oZm-Tj-aMq"/>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="4gT-Vi-peb" kind="show" identifier="Definition" id="cQR-9G-PCm"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3I9-x8-xTw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="343" y="103"/>
+            <point key="canvasLocation" x="1252.1739130434783" y="102.45535714285714"/>
+        </scene>
+        <!--Emoji Definition View Controller-->
+        <scene sceneID="YHx-kl-PXb">
+            <objects>
+                <viewController id="4gT-Vi-peb" customClass="EmojiDefinitionViewController" customModule="EmojiDictionary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bIO-cS-b9h">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🥦" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWC-fo-Hqk">
+                                <rect key="frame" x="103.5" y="138" width="207" height="227"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="190"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Definition" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F5P-KZ-kpU">
+                                <rect key="frame" x="20" y="418" width="374" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="uND-4g-4Ac"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="F5P-KZ-kpU" firstAttribute="top" secondItem="hWC-fo-Hqk" secondAttribute="bottom" constant="53" id="01F-fG-MRO"/>
+                            <constraint firstItem="hWC-fo-Hqk" firstAttribute="centerX" secondItem="bIO-cS-b9h" secondAttribute="centerX" id="BxY-g7-HY7"/>
+                            <constraint firstItem="F5P-KZ-kpU" firstAttribute="leading" secondItem="uND-4g-4Ac" secondAttribute="leading" constant="20" id="CUN-Ib-zx7"/>
+                            <constraint firstItem="uND-4g-4Ac" firstAttribute="trailing" secondItem="F5P-KZ-kpU" secondAttribute="trailing" constant="20" id="Mmt-qD-y9V"/>
+                            <constraint firstItem="F5P-KZ-kpU" firstAttribute="centerX" secondItem="bIO-cS-b9h" secondAttribute="centerX" id="ikq-Lj-yLI"/>
+                            <constraint firstItem="hWC-fo-Hqk" firstAttribute="top" secondItem="uND-4g-4Ac" secondAttribute="top" constant="50" id="vVo-Zw-HcR"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="LYr-Ws-SNb"/>
+                    <connections>
+                        <outlet property="blownUpEmojiLabel" destination="hWC-fo-Hqk" id="Q6S-ia-QRG"/>
+                        <outlet property="emojiDefinitionLabel" destination="F5P-KZ-kpU" id="jdC-rW-e1W"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mVE-jA-BBz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2105.7971014492755" y="102.45535714285714"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="yJd-qn-Ygr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7Wv-wH-Pcs" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xTs-Dc-OSY">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="p3V-5K-xiF" kind="relationship" relationship="rootViewController" id="x79-9w-jRy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ryP-sH-UMZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="342.02898550724638" y="102.45535714285714"/>
         </scene>
     </scenes>
     <resources>
