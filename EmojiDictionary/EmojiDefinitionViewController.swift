@@ -12,23 +12,15 @@ class EmojiDefinitionViewController: UIViewController {
     @IBOutlet weak var blownUpEmojiLabel: UILabel!
     @IBOutlet weak var emojiDefinitionLabel: UILabel!
     
-    var emoji = "🌽"
+    var emoji = Emoji()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        blownUpEmojiLabel.text = emoji
+        blownUpEmojiLabel.text = emoji.character
         
-        emojiDefinitionLabel.text = emoji.unicodeScalars.first!.properties.name!.capitalized
+        emojiDefinitionLabel.text = "The \(emoji.character) emoji is a \(emoji.definition). It was made in \(emoji.year) and Gosia gave it \(emoji.rating)"
         
-        //let emojis = ["🏎", "🧩", "🙃", "🧄", "🥦"]
-        
-//        if emoji == "🏎" {
-//            emojiDefinitionLabel.text = "Race car!"
-//        }
-//        if emoji == "🧩" {
-//            emojiDefinitionLabel.text = "Puzzle"
-//        }
     }
 
 }
